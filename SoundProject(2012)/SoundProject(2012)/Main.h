@@ -4,6 +4,8 @@
 #include "InputManager.h"
 #include "Camera.h"
 #include "Terrain.h"
+#include "ObjHandler.h"
+
 
 
 	// Global Variables
@@ -27,6 +29,8 @@
 
 	Camera* Cam = new Camera();
 	Terrain* MapTerrain = new Terrain();
+
+	ObjHandler* objHandler;
 
 	//--------------------------------------------------------------------------------------
 	// Forward declarations

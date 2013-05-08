@@ -30,6 +30,9 @@
     <ClCompile Include="Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ObjHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -62,6 +65,9 @@
     <ClInclude Include="Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ObjHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="World.fx" />
@@ -85,5 +91,11 @@
     <Image Include="Pics\heightmap3.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Object files\Hydralisk_obj\Hydtex.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Object files\Hydralisk_obj\Hydralisk_obj.obj" />
   </ItemGroup>
 </Project>

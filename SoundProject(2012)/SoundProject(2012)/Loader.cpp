@@ -10,12 +10,12 @@ Loader::~Loader(void)
 {
 }
 
-void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Object* objekt)
+Object* Loader::LoadObject(char file[256],float mx,float mz,float my,float scale)
 {
 	Vertex pData;
+	Object* objekt = new Object();
 
-	
-	
+
 	char buffer[256]="";
 	bool last = false;
 
@@ -23,174 +23,184 @@ void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Ob
 	std::fstream ObjFile;
 	ObjFile.open(file,std::fstream::in | std::fstream::out | std::fstream::app);
 
-	 std::vector<D3DXVECTOR3> Position;
-     std::vector<D3DXVECTOR3> Normal;
-     std::vector<D3DXVECTOR2> TextureCoord;
-	 
-	
+	std::vector<D3DXVECTOR3> Position;
+	std::vector<D3DXVECTOR3> Normal;
+	std::vector<D3DXVECTOR2> TextureCoord;
+
+
 	float x,y,z;
 	float u,v;
 	int FaceIndex=NULL;
-    int Vertexsize=NULL;
+	int Vertexsize=NULL;
 
 
-	for(int k = 0 ;k < 90000 ;k++)
-                {
-					pData.normal = D3DXVECTOR3(0,0,0);
-					pData.pos = D3DXVECTOR3(0,0,0);
-					pData.texC = D3DXVECTOR2(0,0);
+	//for(int k = 0 ;k < 90000 ;k++)
+	while(!ObjFile.eof())
+	{
+		pData.normal = D3DXVECTOR3(0,0,0);
+		pData.pos = D3DXVECTOR3(0,0,0);
+		pData.texC = D3DXVECTOR2(0,0);
 
-						ObjFile >> buffer;
-						
-                        if(0==strcmp(buffer,"v"))
-                                {
-									last = false;
-                                        ObjFile >>x>>y>>z;
+		ObjFile >> buffer;
 
-                                        Position.push_back(D3DXVECTOR3(((x*scale/10)),(y*(scale/10)),(-z*(scale/10))));
-                                }
-                        else if(0==strcmp(buffer,"vt"))
-                                {
-									last = false;
-                                        ObjFile >>u>>v;
-                                        
-                                        TextureCoord.push_back(D3DXVECTOR2(u,1-v));
-                                }
-						else if(0==strcmp(buffer,"vn"))
-                                {
-									last = false;
-									ObjFile >>x>>y>>z;
+		if(0==strcmp(buffer,"v"))
+		{
+			last = false;
+			ObjFile >>x>>y>>z;
 
-                                    Normal.push_back(D3DXVECTOR3(x,y,z));
-                                }
+			Position.push_back(D3DXVECTOR3(((x*scale/10)),(y*(scale/10)),(-z*(scale/10))));
+		}
+		else if(0==strcmp(buffer,"vt"))
+		{
+			last = false;
+			ObjFile >>u>>v;
 
-                        else if(0==strcmp(buffer,"f"))
-                                {
-									last = true;
+			TextureCoord.push_back(D3DXVECTOR2(u,1-v));
+		}
+		else if(0==strcmp(buffer,"vn"))
+		{
+			last = false;
+			ObjFile >>x>>y>>z;
 
-									for(int i = 0; i < 3;i ++ )
-                                        {
-											ObjFile >>FaceIndex;
-											if(FaceIndex < 0)
-												FaceIndex*=-1;
-											pData.pos = Position.at(FaceIndex-1);
-											
-											if('/'==ObjFile.peek())         /////  '/'  Ignorieren
-											{
-                                                ObjFile.ignore();
-                                                if('/'!=ObjFile.peek()) 
-                                                {
-													
-													ObjFile >>FaceIndex;
-													if(FaceIndex < 0)
-													FaceIndex*=-1;
-													pData.texC = TextureCoord.at(FaceIndex-1);
-                                                }
-											}
-											if('/'==ObjFile.peek())
-											{
-                                                ObjFile.ignore();
+			Normal.push_back(D3DXVECTOR3(x,y,z));
+		}
 
-                                                if('/'!=ObjFile.peek()) 
-                                                {
-													ObjFile >>FaceIndex;
-													if(FaceIndex < 0)
-													FaceIndex*=-1;
-													pData.normal = Normal.at(FaceIndex-1);
-                                                }
-											
-											}
-											//Data->push_back(pData);
-											objekt->addData(pData);
-										}
-								}
-						else if(0==strcmp(buffer,"s"))
-						{
-							last = false;
-						}
-						else if(0==strcmp(buffer,"#"))
-						{
-							last = false;
-						}
-						else if(0==strcmp(buffer,"usemtl"))
-						{
-							last = false;
-						}
-						else if(last == true && !ObjFile.eof())
-									{
+		else if(0==strcmp(buffer,"f"))
+		{
+			last = true;
 
-										objekt->lastFace();
-										//Data->push_back(Data->at(Data->size()-3));
-										//objekt->addData(Data->at(Data->size()-2));
-										//Data->push_back(Data->at(Data->size()-2));
+			for(int i = 0; i < 3;i ++ )
+			{
+				ObjFile >>FaceIndex;
+				if(FaceIndex < 0)
+					FaceIndex*=-1;
+				pData.pos = Position.at(FaceIndex-1);
 
-										char temp[256] = "";
-										int i = 0;
-										int j = 0;
+				if('/'==ObjFile.peek())         /////  '/'  Ignorieren
+				{
+					ObjFile.ignore();
+					if('/'!=ObjFile.peek()) 
+					{
 
-										while(buffer[i] != '/' && buffer[i] != 0)
-										{
-											temp[j] = buffer[i];
-											i++;
-											j++;
-										}
-										i++;
-										j = 0;
-										FaceIndex = atof(temp);
-										if(FaceIndex < 0)
-												FaceIndex*=-1;
-										pData.pos = Position.at(FaceIndex-1);
-											
-										if(buffer[i-1] != 0)
-										{
-											
-										for(int l = 0;l < 256;l++)
-										{
-											temp[l] = NULL;
-										}
+						ObjFile >>FaceIndex;
+						if(FaceIndex < 0)
+							FaceIndex*=-1;
+						pData.texC = TextureCoord.at(FaceIndex-1);
+					}
+				}
+				if('/'==ObjFile.peek())
+				{
+					ObjFile.ignore();
 
-												
-													while(buffer[i] != '/' && buffer[i] != 0)
-													{
-														temp[j] = buffer[i];
-														i++;
-														j++;
-													}
-													i++;
-													j = 0;
-													FaceIndex = atof(temp);
-													if(FaceIndex < 0)
-												FaceIndex*=-1;
-													pData.texC = TextureCoord.at(FaceIndex-1);
-                                            
-													if(buffer[i-1] != 0)
-													{
+					if('/'!=ObjFile.peek()) 
+					{
+						ObjFile >>FaceIndex;
+						if(FaceIndex < 0)
+							FaceIndex*=-1;
+						pData.normal = Normal.at(FaceIndex-1);
+					}
 
-													for(int l = 0;l < 256;l++)
-													{
-														temp[l] = NULL;
-													}
-													
-													while(buffer[i] != 0)
-													{
-														temp[j] = buffer[i];
-														i++;
-														j++;
-													}
-													FaceIndex = atof(temp);
-													if(FaceIndex < 0)
-												FaceIndex*=-1;
-													pData.normal = Normal.at(FaceIndex-1);
+				}
+				//Data->push_back(pData);
+				objekt->addData(pData);
+			}
+		}
+		else if(0==strcmp(buffer,"s"))
+		{
+			last = false;
+		}
+		else if(0==strcmp(buffer,"g"))
+		{
+			last = false;
+		}
+		else if(0==strcmp(buffer,"#"))
+		{
+			last = false;
+		}
+		else if(buffer[0] == '#')
+		{
+			last = false;
+		}
+		else if(0==strcmp(buffer,"usemtl"))
+		{
+			last = false;
+		}
+		else if(last == true && !ObjFile.eof())
+		{
 
-													}
-                                              
-										}
-											//Data->push_back(pData);
-											objekt->addData(pData);
-									}     
-                }
+			objekt->lastFace();
+			//Data->push_back(Data->at(Data->size()-3));
+			//objekt->addData(Data->at(Data->size()-2));
+			//Data->push_back(Data->at(Data->size()-2));
+
+			char temp[256] = "";
+			int i = 0;
+			int j = 0;
+
+			while(buffer[i] != '/' && buffer[i] != 0)
+			{
+				temp[j] = buffer[i];
+				i++;
+				j++;
+			}
+			i++;
+			j = 0;
+			FaceIndex = atof(temp);
+			if(FaceIndex < 0)
+				FaceIndex*=-1;
+			pData.pos = Position.at(FaceIndex-1);
+
+			if(buffer[i-1] != 0)
+			{
+
+				for(int l = 0;l < 256;l++)
+				{
+					temp[l] = NULL;
+				}
 
 
-        ObjFile.close();
-		
+				while(buffer[i] != '/' && buffer[i] != 0)
+				{
+					temp[j] = buffer[i];
+					i++;
+					j++;
+				}
+				i++;
+				j = 0;
+				FaceIndex = atof(temp);
+				if(FaceIndex < 0)
+					FaceIndex*=-1;
+				pData.texC = TextureCoord.at(FaceIndex-1);
+
+				if(buffer[i-1] != 0)
+				{
+
+					for(int l = 0;l < 256;l++)
+					{
+						temp[l] = NULL;
+					}
+
+					while(buffer[i] != 0)
+					{
+						temp[j] = buffer[i];
+						i++;
+						j++;
+					}
+					FaceIndex = atof(temp);
+					if(FaceIndex < 0)
+						FaceIndex*=-1;
+					pData.normal = Normal.at(FaceIndex-1);
+
+				}
+
+			}
+			//Data->push_back(pData);
+			objekt->addData(pData);
+		}     
+	}
+
+
+	ObjFile.close();
+	return objekt;
+
 }

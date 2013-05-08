@@ -6,8 +6,10 @@ extern Camera* Cam;
 extern ID3D10InputLayout* g_pVertexLayout;
 
 extern ID3D10Device* g_pd3dDevice;
-extern ID3D10Effect* g_pEffect;
 
+static ID3D10EffectShaderResourceVariable*	object_mfxDiffuseMapVar;
+static ID3D10EffectTechnique* object_pTechRenderLine;
+static ID3D10Effect* object_pEffect;
 
 class Object
 {
@@ -22,8 +24,7 @@ private:
 	D3DXMATRIX world;
 	D3DXMATRIX translation;
 	D3DXQUATERNION Rotation;
-	ID3D10EffectShaderResourceVariable*	object_mfxDiffuseMapVar;
-	ID3D10EffectTechnique* object_pTechRenderLine;
+	
 	
 	int tick;
 public:
@@ -36,7 +37,7 @@ public:
 	//Returnerar Data
 	void getData(std::vector<Vertex> *in);
 	//Initsierar Buffers
-	void InitBuffers(char file[256] );
+	void InitBuffers(ID3D10Effect* FX,char file[256] );
 	//Returnerar buffer storleken storleken på Data antal vertexes
 	int getBufferSize();
 	//Uppdate
