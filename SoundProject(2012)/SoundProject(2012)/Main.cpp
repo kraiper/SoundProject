@@ -4,6 +4,11 @@
 
 HRESULT InitDevice()
 {
+	soundSystem = new SoundSystem();
+	soundSystem->Initialize();
+	testljud->Initialize(soundSystem->fmodSystem, "Sounds/Bossa.mp3");
+	testljud->Play();
+
 	HRESULT hr = S_OK;
 
 	RECT rc;
@@ -169,6 +174,7 @@ HRESULT InitDevice()
 
 void Update(float deltaTime)	
 {
+	
 	//HRESULT hr = S_OK;
 
 	////ps->Update();

@@ -1,9 +1,12 @@
 #pragma comment(lib,"FreeImage/FreeImage")
+//#pragma comment(lib,"fmod")
+
 
 #include "stdafx.h"
 #include "InputManager.h"
 #include "Camera.h"
 #include "Terrain.h"
+#include "SoundSystem.hpp"
 
 
 	// Global Variables
@@ -27,6 +30,8 @@
 
 	Camera* Cam = new Camera();
 	Terrain* MapTerrain = new Terrain();
+	SoundSystem* soundSystem;
+	Sound* testljud = new Sound();
 
 	//--------------------------------------------------------------------------------------
 	// Forward declarations
