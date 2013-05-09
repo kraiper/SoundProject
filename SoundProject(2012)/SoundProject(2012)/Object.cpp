@@ -32,15 +32,16 @@ void Object::getData(std::vector<Vertex> *in)
 	}
 }
 
-void Object::InitBuffers(char file[256] )
+void Object::InitBuffers(ID3D10Effect* FX,char file[256] )
 {
-	object_pTechRenderLine = g_pEffect->GetTechniqueByName("AVI");
-	object_mfxDiffuseMapVar = g_pEffect->GetVariableByName("frame")->AsShaderResource();
+	object_pEffect = FX;
+	object_pTechRenderLine = object_pEffect->GetTechniqueByName("AVI");
+	object_mfxDiffuseMapVar = object_pEffect->GetVariableByName("frame")->AsShaderResource();
 
 	D3D10_BUFFER_DESC bd;
 
 	bd.Usage = D3D10_USAGE_DYNAMIC;
-	bd.ByteWidth = sizeof( Vertex) * Data.size() ;
+	bd.ByteWidth = sizeof(Vertex) * Data.size();
 	bd.BindFlags = D3D10_BIND_VERTEX_BUFFER;
 	bd.CPUAccessFlags = D3D10_CPU_ACCESS_WRITE;
 	bd.MiscFlags = 0;
@@ -120,7 +121,7 @@ void Object::Draw()
 	object_pTechRenderLine->GetDesc( &techDesc );
 	g_pd3dDevice->IASetVertexBuffers( 0, 1, &Buffer, &stride, &offset );
 	object_mfxDiffuseMapVar->SetResource(Texture);
-	g_pEffect->GetVariableByName( "WorldMatrix" )->AsMatrix()->SetMatrix( (float*)&world);
+	object_pEffect->GetVariableByName( "WorldMatrix" )->AsMatrix()->SetMatrix( (float*)&world);
 	for( UINT p = 0; p < techDesc.Passes; p++ )
 	{
 		object_pTechRenderLine->GetPassByIndex( p )->Apply(0);

@@ -31,6 +31,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SoundSystem.cpp">
+    <ClCompile Include="ObjHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -66,6 +67,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SoundSystem.hpp">
+    <ClInclude Include="ObjHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -91,6 +93,12 @@
     <Image Include="Pics\heightmap3.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Object files\Hydralisk_obj\Hydtex.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Object files\Hydralisk_obj\Hydralisk_obj.obj" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Sounds\Laser.mp3" />

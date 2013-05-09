@@ -178,7 +178,15 @@ void Terrain::CreateTerrain(ID3D10Device* g_pd3dDevice)
 	pTerrainMesh->SetIndexData(pMeshIndices, numIndices);
 	pTerrainMesh->CommitToDevice();
 
-	
+	terrain_mfxDiffuseMapVar = g_pEffect->GetVariableByName("frame")->AsShaderResource();
+
+	D3DX10_IMAGE_LOAD_INFO loadInfo;
+	ZeroMemory( &loadInfo, sizeof(D3DX10_IMAGE_LOAD_INFO) );
+	loadInfo.BindFlags = D3D10_BIND_SHADER_RESOURCE;
+	loadInfo.Format = DXGI_FORMAT_BC1_UNORM;
+	ID3D10ShaderResourceView *pSRView = NULL;
+	D3DX10CreateShaderResourceViewFromFile( g_pd3dDevice, "Pics/Terrain_texture.jpg", &loadInfo, NULL, &pTerrainTexture, NULL );
+
 	//free memory
 	delete[] pMeshVertices;
 	delete[] pMeshIndices;
@@ -267,6 +275,8 @@ void Terrain::Draw(ID3D10Device* g_pd3dDevice)
 
 	g_pEffect->GetVariableByName( "normalMatrix" )->AsMatrix()->SetMatrix( (float*)&wvp);
 	
+
+
 	// Set Input Assembler params
 	UINT stride = sizeof(LineVertex);
 	UINT offset = 0;
@@ -283,7 +293,7 @@ void Terrain::Draw(ID3D10Device* g_pd3dDevice)
 
 	// Render line using the technique g_pRenderTextured
 
-	
+	terrain_mfxDiffuseMapVar->SetResource(pTerrainTexture);
 
 	D3D10_TECHNIQUE_DESC techDesc;
 	g_pTechRenderLine->GetDesc( &techDesc );

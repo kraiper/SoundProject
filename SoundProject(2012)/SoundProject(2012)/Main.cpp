@@ -149,18 +149,9 @@ HRESULT InitDevice()
 		PassDesc.IAInputSignatureSize,
 		&g_pVertexLayout );
 
-
-	D3DX10_IMAGE_LOAD_INFO loadInfo;
-	ZeroMemory( &loadInfo, sizeof(D3DX10_IMAGE_LOAD_INFO) );
-	loadInfo.BindFlags = D3D10_BIND_SHADER_RESOURCE;
-	loadInfo.Format = DXGI_FORMAT_BC1_UNORM;
-	ID3D10ShaderResourceView *pSRView = NULL;
-	D3DX10CreateShaderResourceViewFromFile( g_pd3dDevice, "Pics/Terrain_texture.jpg", &loadInfo, NULL, &pSRView, NULL );
-
-	ID3D10EffectShaderResourceVariable* mfxDiffuseMapVar;
+	/*ID3D10EffectShaderResourceVariable* mfxDiffuseMapVar;
 	mfxDiffuseMapVar = g_pEffect->GetVariableByName("frame")->AsShaderResource();
-	mfxDiffuseMapVar->SetResource(pSRView);
-
+*/
 	g_pEffect->GetVariableByName("LightPos")->AsVector()->SetFloatVector(D3DXVECTOR3(1,50,1));
 	g_pEffect->GetVariableByName("Ambient")->SetRawValue(D3DXVECTOR3(0.1,0,0),0.0,4.0);
 
@@ -168,7 +159,7 @@ HRESULT InitDevice()
 	//Creates my hightmap lanscape
 	MapTerrain->CreateTerrain(g_pd3dDevice);
 
-
+	objHandler = new ObjHandler(g_pEffect);
 	return S_OK;
 }
 
@@ -221,7 +212,7 @@ void Update(float deltaTime)
 HRESULT Render()
 {
 	MapTerrain->Draw(g_pd3dDevice);
-
+	objHandler->Draw();
 	
 
 	if(FAILED(g_pSwapChain->Present( 0, 0 )))

@@ -11,6 +11,8 @@ extern ID3D10RenderTargetView* g_pRenderTargetView;
 extern ID3D10Texture2D* g_pDepthStencil;
 extern ID3D10DepthStencilView* g_pDepthStencilView;
 
+static ID3D10EffectShaderResourceVariable*	terrain_mfxDiffuseMapVar;
+
 class Terrain
 {
 private:
