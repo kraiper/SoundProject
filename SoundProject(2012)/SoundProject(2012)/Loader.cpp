@@ -10,10 +10,9 @@ Loader::~Loader(void)
 {
 }
 
-Object* Loader::LoadObject(char file[256],float mx,float mz,float my,float scale)
+void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Object* objekt)
 {
 	Vertex pData;
-	Object* objekt = new Object();
 
 
 	char buffer[256]="";
@@ -201,6 +200,5 @@ Object* Loader::LoadObject(char file[256],float mx,float mz,float my,float scale
 
 
 	ObjFile.close();
-	return objekt;
 
 }

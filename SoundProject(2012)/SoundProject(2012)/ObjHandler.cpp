@@ -7,7 +7,7 @@ ObjHandler::ObjHandler(ID3D10Effect* FX)
 	Hydralisk = new Object();
 	//Hydralisk = load->LoadObject("Object files\\Hydralisk_obj\\babylon station.obj",0,0,0,1);
 	//Hydralisk = load->LoadObject("Object files\\Hydralisk_obj\\Hydralisk_obj.obj",0,0,0,1);
-	Hydralisk = load->LoadObject("Object files\\Zergling\\zergling_obj.OBJ",0,0,0,5);
+	load->LoadObject("Object files\\Zergling\\zergling_obj.OBJ",0,0,0,5,Hydralisk);
 	//Hydralisk->InitBuffers(FX,"Object files\\Hydralisk_obj\\Hydtex.jpg");
 	Hydralisk->InitBuffers(FX,"Pics/Terrain_texture.jpg");
 	
