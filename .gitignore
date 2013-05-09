@@ -1,6 +1,7 @@
 # Ignore compiled files
 Dist/
 Build/
+Debug/
 
 # Ignore Visual Studio session files
 ipch/
