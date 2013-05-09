@@ -75,11 +75,8 @@
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Object.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="SoundSystem.cpp" />
-=======
     <ClCompile Include="ObjHandler.cpp" />
->>>>>>> 4a17155f2d4a224df89b2aae35b5c92925c8ce96
     <ClCompile Include="Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -90,11 +87,8 @@
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Object.h" />
-<<<<<<< HEAD
     <ClInclude Include="SoundSystem.hpp" />
-=======
     <ClInclude Include="ObjHandler.h" />
->>>>>>> 4a17155f2d4a224df89b2aae35b5c92925c8ce96
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Vertex.h" />
@@ -118,14 +112,11 @@
     <Image Include="Pics\Terrain_texture.jpg" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Media Include="Sounds\bossa.mp3" />
     <Media Include="Sounds\Laser.mp3" />
-=======
     <Object Include="Object files\Hydralisk_obj\Hydralisk_obj.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </Object>
->>>>>>> 4a17155f2d4a224df89b2aae35b5c92925c8ce96
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

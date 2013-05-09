@@ -6,12 +6,9 @@
 #include "InputManager.h"
 #include "Camera.h"
 #include "Terrain.h"
-<<<<<<< HEAD
 #include "SoundSystem.hpp"
-=======
 #include "ObjHandler.h"
 
->>>>>>> 4a17155f2d4a224df89b2aae35b5c92925c8ce96
 
 
 	// Global Variables
