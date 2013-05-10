@@ -2,6 +2,8 @@
 Dist/
 Build/
 Debug/
+SoundProject(2012)/Debug/
+SoundProject(2012)/SoundProject(2012)/Debug/
 
 # Ignore Visual Studio session files
 ipch/
@@ -15,4 +17,16 @@ ipch/
 *.ods#
 ~*
 .~*
+# Compiled Object files
+*.slo
+*.lo
+*.o
 
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
