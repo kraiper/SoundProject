@@ -10,15 +10,16 @@ Loader::~Loader(void)
 {
 }
 
-Object* Loader::LoadObject(char file[256],float mx,float mz,float my,float scale)
+void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Object* objekt)
 {
 	Vertex pData;
-	Object* objekt = new Object();
-
-
 	char buffer[256]="";
 	bool last = false;
-
+	float pos[3];
+	pos[0] = mx;
+	pos[1] = my;
+	pos[2] = mz;
+	objekt->setPos(pos);
 
 	std::fstream ObjFile;
 	ObjFile.open(file,std::fstream::in | std::fstream::out | std::fstream::app);
@@ -201,6 +202,5 @@ Object* Loader::LoadObject(char file[256],float mx,float mz,float my,float scale
 
 
 	ObjFile.close();
-	return objekt;
 
 }

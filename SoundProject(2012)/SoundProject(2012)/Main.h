@@ -32,10 +32,10 @@
 
 	Camera* Cam = new Camera();
 	Terrain* MapTerrain = new Terrain();
-	SoundSystem* soundSystem;
+	SoundSystem* soundSystem;// = new SoundSystem();
 	Sound* testljud = new Sound();
 
-	ObjHandler* objHandler;
+	//ObjHandler* objHandler;
 
 	//--------------------------------------------------------------------------------------
 	// Forward declarations

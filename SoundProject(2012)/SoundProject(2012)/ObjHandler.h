@@ -2,9 +2,11 @@
 #include "stdafx.h"
 #include "Object.h"
 #include "Loader.h"
+#include "SoundSystem.hpp"
 
 //extern ID3D10Device* g_pd3dDevice;
 //extern ID3D10Effect* g_pEffect;
+//extern SoundSystem* soundSystem;
 
 class ObjHandler
 {

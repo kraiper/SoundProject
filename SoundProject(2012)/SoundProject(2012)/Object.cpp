@@ -1,11 +1,14 @@
 #include "Object.h"
 
 
-Object::Object(void)
+Object::Object(char* soundFileName)
 {
 	D3DXQuaternionIdentity(&Rotation);
 	D3DXMatrixIdentity(&world);
 	tick = 0;
+	//objectSound = new Sound();
+	//objectSound->Initialize(soundSystem->fmodSystem, soundFileName);
+	spawned = false;
 }
 
 
@@ -76,7 +79,16 @@ void Object::Update()
 {
 	//D3DXMatrixIdentity(&world);
 	//D3DXQuaternionIdentity(&Rotation);
-	D3DXQUATERNION qTmp;
+
+	if(!spawned)
+	{
+		objectSound->Play();
+		spawned = true;
+	}
+	
+	objectSound->CalculateSoundLevel(getPos(),Cam->getCameraPosition(),Cam->getCameraDirection(),200);
+
+	/*D3DXQUATERNION qTmp;
 	D3DXQuaternionRotationYawPitchRoll(&qTmp, rotX, rotY, rotZ);
 
 	Rotation *= qTmp;
@@ -84,7 +96,7 @@ void Object::Update()
 	D3DXMatrixRotationQuaternion(&world, &Rotation);
 
 		
-	world = world *translation;
+	world = world *translation;*/
 }
 
 void Object::setWorld()
@@ -128,4 +140,12 @@ void Object::Draw()
 		
 	}
 	g_pd3dDevice->Draw(getBufferSize(), 0);
+}
+
+void Object::setPos(float* in)
+{
+	this->pos = new float[3];
+	this->pos[0] = in[0];
+	this->pos[1] = in[1];
+	this->pos[2] = in[2];
 }

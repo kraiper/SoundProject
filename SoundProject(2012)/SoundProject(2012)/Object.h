@@ -1,11 +1,14 @@
 #pragma once
 #include "stdafx.h"
 #include "Camera.h"
+#include "SoundSystem.hpp"
 
 extern Camera* Cam;
 extern ID3D10InputLayout* g_pVertexLayout;
 
 extern ID3D10Device* g_pd3dDevice;
+
+//extern SoundSystem* soundSystem;
 
 static ID3D10EffectShaderResourceVariable*	object_mfxDiffuseMapVar;
 static ID3D10EffectTechnique* object_pTechRenderLine;
@@ -17,6 +20,7 @@ private:
 
 	Vertex* fData;
 	float rotX,rotY,rotZ;
+	float* pos;
 	D3DXVECTOR3 frameMove;
 	std::vector<Vertex> Data;
 	ID3D10Buffer* Buffer;
@@ -25,10 +29,13 @@ private:
 	D3DXMATRIX translation;
 	D3DXQUATERNION Rotation;
 	
+	Sound* objectSound;
+	
+	bool spawned;
 	
 	int tick;
 public:
-	Object(void);
+	Object(char* soundFileName);
 	~Object(void);
 	//Lägger till ett nytt värde i slutet på data
 	void addData(Vertex iData);
@@ -48,5 +55,9 @@ public:
 	void setData(float moveX,float moveY,float moveZ,float scale);
 	//Draw
 	void Draw();
+	//Sets the objects center position
+	void setPos(float* in);
+	//Returns the position of the object
+	float* getPos(){return pos;};
 };
 

@@ -8,7 +8,6 @@
 #include <string>
 #include <vector>
 #include "Vertex.h"
-#include "Object.h"
 
 
 #define SAFE_RELEASE(x) if( x ) { (x)->Release(); (x) = NULL; }

@@ -114,6 +114,8 @@
   <ItemGroup>
     <Media Include="Sounds\bossa.mp3" />
     <Media Include="Sounds\Laser.mp3" />
+    <Media Include="Sounds\StarcraftBackgroundTerran.mp3" />
+    <Media Include="Sounds\ZerglingSoundTroll.mp3" />
     <Object Include="Object files\Hydralisk_obj\Hydralisk_obj.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </Object>

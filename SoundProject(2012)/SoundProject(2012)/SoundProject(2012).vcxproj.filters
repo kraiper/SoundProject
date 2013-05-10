@@ -1,107 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Terrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Loader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundSystem.cpp">
-    <ClCompile Include="ObjHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="hrTimer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FreeImage\FreeImage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Loader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundSystem.hpp">
-    <ClInclude Include="ObjHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <FxCompile Include="World.fx" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="FreeImage\FreeImage.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Pics\heightmap.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Pics\Terrain_heightmap.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Pics\Terrain_texture.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Pics\heightmap2.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Pics\heightmap3.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Object files\Hydralisk_obj\Hydtex.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <Object Include="Object files\Hydralisk_obj\Hydralisk_obj.obj" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Sounds\Laser.mp3" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Loader.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="SoundSystem.cpp" />
+    <ClCompile Include="ObjHandler.cpp" />
+    <ClCompile Include="Terrain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="FreeImage\FreeImage.h" />
+    <ClInclude Include="hrTimer.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Loader.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="SoundSystem.hpp" />
+    <ClInclude Include="ObjHandler.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Terrain.h" />
+    <ClInclude Include="Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
     <Media Include="Sounds\bossa.mp3" />
+    <Media Include="Sounds\Laser.mp3" />
+    <Media Include="Sounds\StarcraftBackgroundTerran.mp3" />
+    <Media Include="Sounds\ZerglingSoundTroll.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Object files\Hydralisk_obj\Hydtex.jpg" />
+    <Image Include="Pics\heightmap.bmp" />
+    <Image Include="Pics\heightmap2.bmp" />
+    <Image Include="Pics\heightmap3.bmp" />
+    <Image Include="Pics\Terrain_heightmap.bmp" />
+    <Image Include="Pics\Terrain_texture.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FreeImage\FreeImage.dll" />
   </ItemGroup>
 </Project>

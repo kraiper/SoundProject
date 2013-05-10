@@ -6,9 +6,11 @@ HRESULT InitDevice()
 {
 	soundSystem = new SoundSystem();
 	soundSystem->Initialize();
-	testljud->Initialize(soundSystem->fmodSystem, "Sounds/Bossa.mp3");
+	
+	
+	testljud->Initialize(soundSystem->fmodSystem, "Sounds/StarcraftBackgroundTerran.mp3");
 	testljud->Play();
-
+	
 	HRESULT hr = S_OK;
 
 	RECT rc;
@@ -156,16 +158,18 @@ HRESULT InitDevice()
 	g_pEffect->GetVariableByName("Ambient")->SetRawValue(D3DXVECTOR3(0.1,0,0),0.0,4.0);
 
 	
+	
 	//Creates my hightmap lanscape
 	MapTerrain->CreateTerrain(g_pd3dDevice);
 
-	objHandler = new ObjHandler(g_pEffect);
+	//objHandler = new ObjHandler(g_pEffect);
 	return S_OK;
 }
 
 void Update(float deltaTime)	
 {
-	
+	//objHandler->Update();
+	testljud->SetStereoratio(1,1);
 	//HRESULT hr = S_OK;
 
 	////ps->Update();
@@ -212,7 +216,7 @@ void Update(float deltaTime)
 HRESULT Render()
 {
 	MapTerrain->Draw(g_pd3dDevice);
-	objHandler->Draw();
+	//objHandler->Draw();
 	
 
 	if(FAILED(g_pSwapChain->Present( 0, 0 )))
