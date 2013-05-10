@@ -5,6 +5,7 @@ Object::Object(void)
 {
 	D3DXQuaternionIdentity(&Rotation);
 	D3DXMatrixIdentity(&world);
+	D3DXMatrixIdentity(&translation);
 	tick = 0;
 }
 
@@ -72,19 +73,28 @@ int Object::getBufferSize()
 	return Data.size();
 }
 
-void Object::Update()
+bool Object::Update(float dt,float mx,float my,float mz)
 {
-	//D3DXMatrixIdentity(&world);
+	D3DXMatrixIdentity(&world);
 	//D3DXQuaternionIdentity(&Rotation);
-	D3DXQUATERNION qTmp;
-	D3DXQuaternionRotationYawPitchRoll(&qTmp, rotX, rotY, rotZ);
+	//D3DXQUATERNION qTmp;
+	//D3DXQuaternionRotationYawPitchRoll(&qTmp, rotX, rotY, rotZ);
 
-	Rotation *= qTmp;
+	//Rotation *= qTmp;
 
-	D3DXMatrixRotationQuaternion(&world, &Rotation);
+	//D3DXMatrixRotationQuaternion(&world, &Rotation);
+	
+	D3DXMatrixTranslation(&translation,mx*dt,my*dt,mz*dt);
 
+	//translation._14 = (mx*dt);
+	//translation._24 = (my*dt);
+	//translation._34 = (mz*dt);
+
+	//if(translation._14 > 10)
+	//	translation._14 = 0;
 		
 	world = world *translation;
+	return false;
 }
 
 void Object::setWorld()

@@ -10,7 +10,7 @@ Loader::~Loader(void)
 {
 }
 
-void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Object* objekt)
+void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Object* objekt,float invertX = 1,float invertY = 1,float invertZ = 1)
 {
 	Vertex pData;
 
@@ -46,8 +46,9 @@ void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Ob
 		{
 			last = false;
 			ObjFile >>x>>y>>z;
-
-			Position.push_back(D3DXVECTOR3(((x*scale/10)),(y*(scale/10)),(-z*(scale/10))));
+			
+			Position.push_back(D3DXVECTOR3((x*(scale/10)*invertX),(y*(scale/10)*invertY),(-z*(scale/10)*invertZ)));
+			
 		}
 		else if(0==strcmp(buffer,"vt"))
 		{
@@ -202,3 +203,4 @@ void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Ob
 	ObjFile.close();
 
 }
+

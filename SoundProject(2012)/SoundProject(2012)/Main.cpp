@@ -159,13 +159,13 @@ HRESULT InitDevice()
 	//Creates my hightmap lanscape
 	MapTerrain->CreateTerrain(g_pd3dDevice);
 
-//	objHandler = new ObjHandler(g_pEffect);
+	objHandler = new ObjHandler(g_pEffect);
 	return S_OK;
 }
 
 void Update(float deltaTime)	
 {
-	
+	objHandler->Update(deltaTime);
 	//HRESULT hr = S_OK;
 
 	////ps->Update();
@@ -212,7 +212,7 @@ void Update(float deltaTime)
 HRESULT Render()
 {
 	MapTerrain->Draw(g_pd3dDevice);
-//	objHandler->Draw();
+	objHandler->Draw();
 	
 
 	if(FAILED(g_pSwapChain->Present( 0, 0 )))
@@ -251,6 +251,7 @@ int WINAPI wWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdL
 
 	// Main message loop
 	MSG msg = {0};
+	QueryPerformanceCounter((LARGE_INTEGER*)&prevTimeStamp);
 	while(WM_QUIT != msg.message)
 	{
 		if( PeekMessage( &msg, NULL, 0, 0, PM_REMOVE) )

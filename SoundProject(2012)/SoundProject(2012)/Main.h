@@ -35,7 +35,7 @@
 	SoundSystem* soundSystem;
 	Sound* testljud = new Sound();
 
-	//ObjHandler* objHandler;
+	ObjHandler* objHandler;
 
 	//--------------------------------------------------------------------------------------
 	// Forward declarations

@@ -14,7 +14,7 @@ private:
 public:
 	ObjHandler(ID3D10Effect* FX);
 	~ObjHandler(void);
-	void Update();
+	void Update(float dt);
 	void Draw();
 };
 
