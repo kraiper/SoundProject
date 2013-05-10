@@ -26,7 +26,7 @@ public:
 	~Sound();
 	void Initialize(FMOD::System*, char*);
 	void Play();
-	void CalculateSoundLevel(float[3], float[3], float[3], float);
+	void CalculateSoundLevel(float[3], float[3], float[3],float[3], float);
 	//Insert filterfunktion
 	void crossProduct(float[], float[], float[]);
 	void normalize(float[], float[]) ;

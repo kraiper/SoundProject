@@ -105,6 +105,7 @@
     <Image Include="Object files\Hydralisk_obj\Hydtex.jpg">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </Image>
+    <Image Include="Pics\bunker_diffuse.dds" />
     <Image Include="Pics\heightmap.bmp" />
     <Image Include="Pics\heightmap2.bmp" />
     <Image Include="Pics\heightmap3.bmp" />

@@ -168,7 +168,7 @@ HRESULT InitDevice()
 void Update(float deltaTime)	
 {
 	objHandler->Update(deltaTime);
-
+	testljud->SetStereoratio(0.1f,0.1f);
 	//HRESULT hr = S_OK;
 
 	////ps->Update();

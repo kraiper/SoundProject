@@ -42,6 +42,7 @@
     <Image Include="Pics\heightmap3.bmp" />
     <Image Include="Pics\Terrain_heightmap.bmp" />
     <Image Include="Pics\Terrain_texture.jpg" />
+    <Image Include="Pics\bunker_diffuse.dds" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FreeImage\FreeImage.dll" />

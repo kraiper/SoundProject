@@ -12,6 +12,7 @@ class ObjHandler
 {
 private:
 	Object* Hydralisk;
+	Object* Bunker;
 	Loader* load;
 public:
 	ObjHandler(ID3D10Effect* FX);

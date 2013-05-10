@@ -86,7 +86,7 @@ bool Object::Update(float dt,float mx,float my,float mz)
 		spawned = true;
 	}
 	
-	objectSound->CalculateSoundLevel(getPos(),Cam->getCameraPosition(),Cam->getCameraDirection(),200);
+	objectSound->CalculateSoundLevel(getPos(),Cam->getCameraPosition(),Cam->getCameraDirection(),Cam->getCameraUp(),20);
 
 
 	//D3DXQUATERNION qTmp;
@@ -96,6 +96,10 @@ bool Object::Update(float dt,float mx,float my,float mz)
 
 	//D3DXMatrixRotationQuaternion(&world, &Rotation);
 	
+	pos[0] = mx*dt;
+	pos[1] = my*dt;
+	pos[2] = mz*dt;
+
 	D3DXMatrixTranslation(&translation,mx*dt,my*dt,mz*dt);
 
 

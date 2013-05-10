@@ -56,29 +56,53 @@ void Sound::Play()
     //ERRCHECK(result);
 }
 
-void Sound::CalculateSoundLevel(float soundVector[3],float listenerVector[3], float direction[3], float maxDist)
+void Sound::CalculateSoundLevel(float soundVector[3],float listenerVector[3], float direction[3],float upDirection[3], float maxDist)
 {
-	float right = 1, left = 1;
+	float right = 0, left = 0;
+	float dot,abs;
 	float distance, normalizedDistance, result[3];
 	distance = sqrt(pow(soundVector[0]-listenerVector[0],2)+pow(soundVector[1]-listenerVector[1],2)+pow(soundVector[2]-listenerVector[2],2));
-	//if (distance < maxDist)
-	//{
+	if (distance < maxDist)
+	{
 		float soundCamVector[3];
 		soundCamVector[0] = soundVector[0]-listenerVector[0];
 		soundCamVector[1] = soundVector[1]-listenerVector[1];
 		soundCamVector[2] = soundVector[2]-listenerVector[2];
 		normalize(soundCamVector,soundCamVector);
-		crossProduct(soundCamVector, direction, result);
-		normalize(result,result);
-		normalizedDistance = sqrt(pow(result[0],2)+pow(result[1],2)+pow(result[2],2));
-		left = sqrt(2/(2*(cos(normalizedDistance) + sin(normalizedDistance))));
-		right = sqrt(2/(2*(cos(normalizedDistance) - sin(normalizedDistance))));
-	//}
 
-	if (left < 1 && left > 0 && right < 1 && right > 0)
+		normalize(direction,direction);
+		normalize(upDirection,upDirection);
+		crossProduct(direction,upDirection,result);
+		normalize(result,result);
+
+		dot = result[0]*soundCamVector[0] + result[1]*soundCamVector[1] + result[2]*soundCamVector[2];
+
+		if(dot < -1 || dot > 1)
+		{
+			int adsg = 0;
+		}
+		
+		/*left = 1 + dot;
+		right = 1 - dot;*/
+		left = sqrt(1 + dot);
+		right = sqrt(1 - dot);
+
+		float volumeScaling = 1 - distance/maxDist;
+
+		left *= volumeScaling;
+		right *= volumeScaling;
+
+	}
+
+
+	if (left < 100 && left >= 0 && right < 100 && right >= 0)
 		SetStereoratio(right,left);
+	/*else if(left < 10 && left >= 0)
+		SetStereoratio(left,0);
+	else if(right < 10 && right >= 0)
+		SetStereoratio(0,right);*/
 	else
-		SetStereoratio(1,1);
+		SetStereoratio(0,0);
 }
 
 void Sound::SetStereoratio(float right,float left)

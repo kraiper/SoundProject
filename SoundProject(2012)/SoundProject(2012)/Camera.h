@@ -62,6 +62,7 @@ public:
 	D3DXMATRIX&		getProjectionMatrix(){ return projectionMatrix; }
 	D3DXVECTOR3&	getCameraPosition(){ return eye; }
 	D3DXVECTOR3&	getCameraDirection(){ return forward; }
+	D3DXVECTOR3&	getCameraUp(){ return up; }
 
 private:
 
