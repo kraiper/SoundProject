@@ -43,12 +43,14 @@ public:
 	void lastFace();
 	//Returnerar Data
 	void getData(std::vector<Vertex> *in);
+	//Inverts the objects vector positions
+	void InvertObject();
 	//Initsierar Buffers
 	void InitBuffers(ID3D10Effect* FX,char file[256] );
 	//Returnerar buffer storleken storleken på Data antal vertexes
 	int getBufferSize();
-	//Uppdate
-	void Update();
+	//Uppdate returns true if object is to be destroyed
+	bool Update(float dt,float mx,float my,float mz);
 	//Sätter World matrisen
 	void setWorld();
 	//Flyttar roterar och skalar objektet

@@ -6,8 +6,11 @@ HRESULT InitDevice()
 {
 	soundSystem = new SoundSystem();
 	soundSystem->Initialize();
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
 	testljud->Initialize(soundSystem->fmodSystem, "Sounds/StarcraftBackgroundTerran.mp3");
 	testljud->Play();
 	
@@ -168,8 +171,12 @@ HRESULT InitDevice()
 
 void Update(float deltaTime)	
 {
+<<<<<<< HEAD
 	//objHandler->Update();
 	testljud->SetStereoratio(1,1);
+=======
+	objHandler->Update(deltaTime);
+>>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
 	//HRESULT hr = S_OK;
 
 	////ps->Update();
@@ -255,6 +262,7 @@ int WINAPI wWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdL
 
 	// Main message loop
 	MSG msg = {0};
+	QueryPerformanceCounter((LARGE_INTEGER*)&prevTimeStamp);
 	while(WM_QUIT != msg.message)
 	{
 		if( PeekMessage( &msg, NULL, 0, 0, PM_REMOVE) )
