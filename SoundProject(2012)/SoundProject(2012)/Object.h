@@ -8,7 +8,7 @@ extern ID3D10InputLayout* g_pVertexLayout;
 
 extern ID3D10Device* g_pd3dDevice;
 
-//extern SoundSystem* soundSystem;
+extern SoundSystem* soundSystem;
 
 static ID3D10EffectShaderResourceVariable*	object_mfxDiffuseMapVar;
 static ID3D10EffectTechnique* object_pTechRenderLine;

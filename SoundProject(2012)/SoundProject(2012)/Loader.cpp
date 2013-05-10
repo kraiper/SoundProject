@@ -10,20 +10,11 @@ Loader::~Loader(void)
 {
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Object* objekt)
-{
-	Vertex pData;
-=======
-=======
->>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
+
 void Loader::LoadObject(char file[256],float mx,float mz,float my,float scale,Object* objekt,float invertX = 1,float invertY = 1,float invertZ = 1)
 {
 	Vertex pData;
 
-
->>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
 	char buffer[256]="";
 	bool last = false;
 	float pos[3];

@@ -7,8 +7,8 @@ Object::Object(char* soundFileName)
 	D3DXMatrixIdentity(&world);
 	D3DXMatrixIdentity(&translation);
 	tick = 0;
-	//objectSound = new Sound();
-	//objectSound->Initialize(soundSystem->fmodSystem, soundFileName);
+	objectSound = new Sound();
+	objectSound->Initialize(soundSystem->fmodSystem, soundFileName);
 	spawned = false;
 }
 
@@ -80,9 +80,6 @@ bool Object::Update(float dt,float mx,float my,float mz)
 {
 	D3DXMatrixIdentity(&world);
 	//D3DXQuaternionIdentity(&Rotation);
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 	if(!spawned)
 	{
 		objectSound->Play();
@@ -91,24 +88,7 @@ bool Object::Update(float dt,float mx,float my,float mz)
 	
 	objectSound->CalculateSoundLevel(getPos(),Cam->getCameraPosition(),Cam->getCameraDirection(),200);
 
-	/*D3DXQUATERNION qTmp;
-	D3DXQuaternionRotationYawPitchRoll(&qTmp, rotX, rotY, rotZ);
-=======
-	//D3DXQUATERNION qTmp;
-	//D3DXQuaternionRotationYawPitchRoll(&qTmp, rotX, rotY, rotZ);
 
-	//Rotation *= qTmp;
->>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
-
-	//D3DXMatrixRotationQuaternion(&world, &Rotation);
-	
-	D3DXMatrixTranslation(&translation,mx*dt,my*dt,mz*dt);
-
-	//translation._14 = (mx*dt);
-	//translation._24 = (my*dt);
-	//translation._34 = (mz*dt);
-
-=======
 	//D3DXQUATERNION qTmp;
 	//D3DXQuaternionRotationYawPitchRoll(&qTmp, rotX, rotY, rotZ);
 
@@ -118,23 +98,9 @@ bool Object::Update(float dt,float mx,float my,float mz)
 	
 	D3DXMatrixTranslation(&translation,mx*dt,my*dt,mz*dt);
 
-	//translation._14 = (mx*dt);
-	//translation._24 = (my*dt);
-	//translation._34 = (mz*dt);
 
->>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
-	//if(translation._14 > 10)
-	//	translation._14 = 0;
-		
-<<<<<<< HEAD
-	world = world *translation;*/
-=======
 	world = world *translation;
 	return false;
-<<<<<<< HEAD
->>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
-=======
->>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
 }
 
 void Object::setWorld()
