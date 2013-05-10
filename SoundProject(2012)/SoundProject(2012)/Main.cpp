@@ -7,8 +7,11 @@ HRESULT InitDevice()
 	soundSystem = new SoundSystem();
 	soundSystem->Initialize();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
 =======
 >>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
 	testljud->Initialize(soundSystem->fmodSystem, "Sounds/StarcraftBackgroundTerran.mp3");
@@ -172,8 +175,12 @@ HRESULT InitDevice()
 void Update(float deltaTime)	
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	//objHandler->Update();
 	testljud->SetStereoratio(1,1);
+=======
+	objHandler->Update(deltaTime);
+>>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
 =======
 	objHandler->Update(deltaTime);
 >>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32

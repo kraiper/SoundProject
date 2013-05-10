@@ -81,6 +81,7 @@ bool Object::Update(float dt,float mx,float my,float mz)
 	D3DXMatrixIdentity(&world);
 	//D3DXQuaternionIdentity(&Rotation);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if(!spawned)
 	{
@@ -107,6 +108,21 @@ bool Object::Update(float dt,float mx,float my,float mz)
 	//translation._24 = (my*dt);
 	//translation._34 = (mz*dt);
 
+=======
+	//D3DXQUATERNION qTmp;
+	//D3DXQuaternionRotationYawPitchRoll(&qTmp, rotX, rotY, rotZ);
+
+	//Rotation *= qTmp;
+
+	//D3DXMatrixRotationQuaternion(&world, &Rotation);
+	
+	D3DXMatrixTranslation(&translation,mx*dt,my*dt,mz*dt);
+
+	//translation._14 = (mx*dt);
+	//translation._24 = (my*dt);
+	//translation._34 = (mz*dt);
+
+>>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
 	//if(translation._14 > 10)
 	//	translation._14 = 0;
 		
@@ -115,6 +131,9 @@ bool Object::Update(float dt,float mx,float my,float mz)
 =======
 	world = world *translation;
 	return false;
+<<<<<<< HEAD
+>>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
+=======
 >>>>>>> 66cb66d4ecebedfbeed0d377cddd583e42174c32
 }
 
