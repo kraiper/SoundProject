@@ -20,6 +20,7 @@ void SoundSystem::Initialize()
 
 void SoundSystem::Update()
 {
+
 	fmodSystem->update();
 }
 
@@ -34,6 +35,8 @@ Sound::~Sound()
 {
 	result = sound1->release();
 	result = sound2->release();
+	result = mastergroup->removeDSP(customDSP);
+    result = customDSP->release();
     //ERRCHECK(result);
 }
 
@@ -45,6 +48,30 @@ void Sound::Initialize(FMOD::System *fmodsystem, char* filename)
 	result = fmodSystem->createSound("Sounds/aint_I_right.mp3", FMOD_LOOP_NORMAL, 0, &sound2); //Modify this one
 	switchSoundint = 1;
 	//ERRCHECK(result);
+	
+	FMOD_DSP_DESCRIPTION dspdesc;
+	memset(&dspdesc, 0, sizeof(dspdesc));
+    
+	//DSP
+	strncpy(dspdesc.name, "custom DSP unit", sizeof(dspdesc.name));
+	dspdesc.version = 0x00010000;
+	dspdesc.numinputbuffers = 1;
+	dspdesc.numoutputbuffers = 1;
+	dspdesc.read = myDSPCallback;
+	dspdesc.userdata = (void *)0x12345678; 
+
+	result = fmodSystem->createDSP(&dspdesc, &customDSP); 
+	//ERRCHECK(result); 
+
+	result = customDSP->setBypass(true);
+    //ERRCHECK(result);
+
+    result = fmodSystem->getMasterChannelGroup(&mastergroup);
+    //ERRCHECK(result);
+
+    result = mastergroup->addDSP(0, customDSP, 0);
+    //ERRCHECK(result);
+    
 }
 
 void Sound::Play()
@@ -171,3 +198,45 @@ void Sound::SwitchSounds()
     //ERRCHECK(result);
 	//switchSoundint = 0;
 }
+
+FMOD_RESULT F_CALLBACK myDSPCallback(FMOD_DSP_STATE *dsp_state, float *inbuffer, float *outbuffer, unsigned int length, int inchannels, int *outchannels) 
+{
+    FMOD_RESULT result;
+    char name[256];
+    unsigned int userdata;
+    FMOD::DSP *thisdsp = (FMOD::DSP *)dsp_state->instance; 
+
+    /* 
+        This redundant call just shows using the instance parameter of FMOD_DSP_STATE to 
+        call a DSP information function. 
+    */
+    result = thisdsp->getInfo(name, 0, 0, 0, 0);
+    //ERRCHECK(result);
+
+    result = thisdsp->getUserData((void **)&userdata);
+    //ERRCHECK(result);
+
+    /*
+        This loop assumes inchannels = outchannels, which it will be if the DSP is created with '0' 
+        as the number of channels in FMOD_DSP_DESCRIPTION.  
+        Specifying an actual channel count will mean you have to take care of any number of channels coming in,
+        but outputting the number of channels specified. Generally it is best to keep the channel 
+        count at 0 for maximum compatibility.
+    */
+    for (unsigned int samp = 0; samp < length; samp++) 
+    { 
+        /*
+            Feel free to unroll this.
+        */
+        for (int chan = 0; chan < *outchannels; chan++)
+        {
+            /* 
+                This DSP filter just halves the volume! 
+                Input is modified, and sent to output.
+            */
+            outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan] * 0.2f;
+        }
+    } 
+
+    return FMOD_OK; 
+} 
