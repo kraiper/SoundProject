@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Camera.h"
-#include "SoundSystem.hpp"
+#include "Sound.h"
 
 extern Camera* Cam;
 extern ID3D10InputLayout* g_pVertexLayout;
