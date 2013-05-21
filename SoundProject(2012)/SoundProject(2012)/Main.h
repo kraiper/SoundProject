@@ -6,7 +6,7 @@
 #include "InputManager.h"
 #include "Camera.h"
 #include "Terrain.h"
-#include "SoundSystem.hpp"
+#include "Sound.h"
 #include "ObjHandler.h"
 #include "ButtonInput.h"
 
