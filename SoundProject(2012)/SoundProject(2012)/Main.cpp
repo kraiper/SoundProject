@@ -8,7 +8,7 @@ HRESULT InitDevice()
 	soundSystem->Initialize();
 	
 	testljud->Initialize(soundSystem->fmodSystem, "Sounds/StarcraftBackgroundTerran.mp3");
-	testljud->Play();
+	//testljud->Play();
 	
 	HRESULT hr = S_OK;
 

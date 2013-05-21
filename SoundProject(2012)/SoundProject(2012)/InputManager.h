@@ -1,8 +1,10 @@
 #ifndef _RAWINPUT
 #define _RAWINPUT
 #include "Camera.h"  //Gillar inte detta då det inte behövdes tidigare
+#include "ButtonInput.h"
 
 extern Camera* Cam;
+extern ButtonInput* buttonInput;
 
 //register keyboard mouse as input devices!
 bool RegisterInputDevices( HWND &hWnd )
@@ -61,6 +63,12 @@ void inline HandleRawInput( HWND &hWnd, HRAWINPUT &lParam )
 
 					case 'D' : Cam->setMovementToggle( 3, 0 );
 					break;
+
+					case 'M' : buttonInput->SetMPressed(false);
+					break;
+
+					case 'N' : buttonInput->SetNPressed(false);
+					break;
 				}
 			break;
 
@@ -81,6 +89,12 @@ void inline HandleRawInput( HWND &hWnd, HRAWINPUT &lParam )
 					break;
 
 					case 'D' : Cam->setMovementToggle( 3, 1 );
+					break;
+
+					case 'M' : buttonInput->SetMPressed(true);
+					break;
+
+					case 'N' : buttonInput->SetNPressed(true);
 					break;
 				}
 			break;

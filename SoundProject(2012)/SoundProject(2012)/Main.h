@@ -8,6 +8,7 @@
 #include "Terrain.h"
 #include "SoundSystem.hpp"
 #include "ObjHandler.h"
+#include "ButtonInput.h"
 
 
 
@@ -34,6 +35,8 @@
 	Terrain* MapTerrain = new Terrain();
 	SoundSystem* soundSystem;// = new SoundSystem();
 	Sound* testljud = new Sound();
+	ButtonInput* buttonInput = new ButtonInput();
+
 
 	ObjHandler* objHandler;
 

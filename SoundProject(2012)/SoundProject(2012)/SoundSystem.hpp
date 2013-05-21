@@ -2,6 +2,9 @@
 #include <fmod.hpp>
 #include <string>
 #include "stdafx.h"
+#include "ButtonInput.h"
+
+extern ButtonInput* buttonInput;
 
 class SoundSystem
 {
@@ -31,11 +34,20 @@ public:
 	void crossProduct(float[], float[], float[]);
 	void normalize(float[], float[]) ;
 	void SetStereoratio(float,float);//0-1.0f
+
+	void SwitchSounds();
+
 private:
 	
 
 	FMOD::System *fmodSystem;
-	FMOD::Sound *sound;
+	FMOD::Sound *sound1;
+	FMOD::Sound *sound2;
     FMOD::Channel *channel;
+	//echo FMOD::Channel *channelEcho;
 	FMOD_RESULT  result;
+
+	int switchSoundint;
+	unsigned int index;
+	
 };
