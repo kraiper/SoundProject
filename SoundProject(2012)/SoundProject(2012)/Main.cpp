@@ -272,7 +272,7 @@ int WINAPI wWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdL
 			Update(dt);
 			Render();
 			Cam->update();
-			//prevTimeStamp = currTimeStamp;
+			prevTimeStamp = currTimeStamp;
 		}
 	}
 

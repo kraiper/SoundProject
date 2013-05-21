@@ -96,11 +96,11 @@ bool Object::Update(float dt,float mx,float my,float mz)
 
 	//D3DXMatrixRotationQuaternion(&world, &Rotation);
 	
-	pos[0] = mx*dt;
-	pos[1] = my*dt;
-	pos[2] = mz*dt;
+	pos[0] += mx*dt;
+	pos[1] += my*dt;
+	pos[2] += mz*dt;
 
-	D3DXMatrixTranslation(&translation,mx*dt,my*dt,mz*dt);
+	D3DXMatrixTranslation(&translation,pos[0],pos[1],pos[2]);
 
 
 	world = world *translation;

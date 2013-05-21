@@ -1,8 +1,10 @@
 #pragma once
 #include "stdafx.h"
 #include "Object.h"
+#include <list>
 #include "Loader.h"
 #include "SoundSystem.hpp"
+#include <thread>
 
 //extern ID3D10Device* g_pd3dDevice;
 //extern ID3D10Effect* g_pEffect;
@@ -11,7 +13,10 @@
 class ObjHandler
 {
 private:
+	
+	std::vector<Object*> objList;
 	Object* Hydralisk;
+	Object* Objects;
 	Object* Bunker;
 	Loader* load;
 public:
