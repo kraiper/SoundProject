@@ -85,9 +85,10 @@ bool Object::Update(float dt,float mx,float my,float mz)
 		objectSound->Play();
 		spawned = true;
 	}
-	
-	objectSound->CalculateSoundLevel(getPos(),Cam->getCameraPosition(),Cam->getCameraDirection(),Cam->getCameraUp(),20);
+
 	objectSound->Update();
+	objectSound->CalculateSoundLevel(getPos(),Cam->getCameraPosition(),Cam->getCameraDirection(),Cam->getCameraUp(),20);
+	
 
 	//D3DXQUATERNION qTmp;
 	//D3DXQuaternionRotationYawPitchRoll(&qTmp, rotX, rotY, rotZ);

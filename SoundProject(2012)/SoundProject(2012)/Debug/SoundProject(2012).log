@@ -1,11 +1,78 @@
-﻿Build started 2013-05-23 12:44:33.
+﻿Build started 2013-05-23 12:48:23.
      1>Project "I:\Tillämpad ljudteknik\Projekt\SoundProject\SoundProject(2012)\SoundProject(2012)\SoundProject(2012).vcxproj" on node 2 (Build target(s)).
      1>InitializeBuildStatus:
-         Creating "Debug\SoundProject(2012).unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Debug\SoundProject(2012).unsuccessfulbuild".
        ClCompile:
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Sound.cpp
+         Sound.cpp
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49449) : see previous definition of 'DXGI_STATUS_OCCLUDED'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49458) : see previous definition of 'DXGI_STATUS_CLIPPED'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49467) : see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49476) : see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49485) : see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49494) : see previous definition of 'DXGI_STATUS_MODE_CHANGED'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49503) : see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49518) : see previous definition of 'DXGI_ERROR_INVALID_CALL'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49527) : see previous definition of 'DXGI_ERROR_NOT_FOUND'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49536) : see previous definition of 'DXGI_ERROR_MORE_DATA'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49545) : see previous definition of 'DXGI_ERROR_UNSUPPORTED'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49554) : see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49563) : see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49573) : see previous definition of 'DXGI_ERROR_DEVICE_RESET'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49582) : see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49592) : see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49601) : see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49611) : see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49620) : see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49629) : see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49639) : see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49648) : see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49793) : see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+     1>c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND' : macro redefinition
+                 c:\program files (x86)\windows kits\8.0\include\shared\winerror.h(49802) : see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
+     1>i:\tillämpad ljudteknik\projekt\soundproject\soundproject(2012)\soundproject(2012)\sound.cpp(242): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>i:\tillämpad ljudteknik\projekt\soundproject\soundproject(2012)\soundproject(2012)\sound.cpp(256): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>i:\tillämpad ljudteknik\projekt\soundproject\soundproject(2012)\soundproject(2012)\sound.cpp(270): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(191) : see declaration of 'strncpy'
+     1>i:\tillämpad ljudteknik\projekt\soundproject\soundproject(2012)\soundproject(2012)\sound.cpp(349): warning C4101: 'normalizedDistance' : unreferenced local variable
+     1>i:\tillämpad ljudteknik\projekt\soundproject\soundproject(2012)\soundproject(2012)\sound.cpp(348): warning C4101: 'abs' : unreferenced local variable
+     1>i:\tillämpad ljudteknik\projekt\soundproject\soundproject(2012)\soundproject(2012)\sound.cpp(398): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
        Link:
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"I:\Tillämpad ljudteknik\Projekt\SoundProject\SoundProject(2012)\Debug\SoundProject(2012).exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib" d3d10.lib d3dx10.lib DxErr.lib fmod_vc.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"I:\Tillämpad ljudteknik\Projekt\SoundProject\SoundProject(2012)\Debug\SoundProject(2012).pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:\Tillämpad ljudteknik\Projekt\SoundProject\SoundProject(2012)\Debug\SoundProject(2012).lib" /MACHINE:X86 Debug\Camera.obj
+         Debug\DSPfilters.obj
+         Debug\Loader.obj
+         Debug\Main.obj
+         Debug\Object.obj
+         Debug\Sound.obj
+         Debug\SoundSystem.obj
+         Debug\ObjHandler.obj
+         Debug\Terrain.obj
+         LINK : I:\Tillämpad ljudteknik\Projekt\SoundProject\SoundProject(2012)\Debug\SoundProject(2012).exe not found or not built by the last incremental link; performing full link
          SoundProject(2012).vcxproj -> I:\Tillämpad ljudteknik\Projekt\SoundProject\SoundProject(2012)\Debug\SoundProject(2012).exe
        FinalizeBuildStatus:
          Deleting file "Debug\SoundProject(2012).unsuccessfulbuild".
@@ -14,4 +81,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.06
+Time Elapsed 00:00:02.78
