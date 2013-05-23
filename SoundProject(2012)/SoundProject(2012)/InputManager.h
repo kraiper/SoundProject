@@ -66,8 +66,17 @@ void inline HandleRawInput( HWND &hWnd, HRAWINPUT &lParam )
 
 					case 'M' : buttonInput->SetMPressed(false);
 					break;
-
+					
 					case 'N' : buttonInput->SetNPressed(false);
+					break;
+					
+					case 'B' : buttonInput->SetBPressed(false);
+					break;
+
+					case 'V' : buttonInput->SetVPressed(false);
+					break;
+
+					case 'C' : buttonInput->SetCPressed(false);
 					break;
 				}
 			break;
@@ -95,6 +104,15 @@ void inline HandleRawInput( HWND &hWnd, HRAWINPUT &lParam )
 					break;
 
 					case 'N' : buttonInput->SetNPressed(true);
+					break;
+					
+					case 'B' : buttonInput->SetBPressed(true);
+					break;
+
+					case 'V' : buttonInput->SetVPressed(true);
+					break;
+
+					case 'C' : buttonInput->SetCPressed(true);
 					break;
 				}
 			break;

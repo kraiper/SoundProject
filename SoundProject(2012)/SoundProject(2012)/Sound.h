@@ -25,14 +25,16 @@ private:
 
 	FMOD::System *fmodSystem;
 	FMOD::Sound *sound1;
-	FMOD::Sound *sound2;
 	FMOD::DSP *customDSP;
+	FMOD::DSP *echoDSP;
 	FMOD::ChannelGroup *mastergroup;
     FMOD::Channel *channel;
-	//echo FMOD::Channel *channelEcho;
+	FMOD::Channel *channelEcho;
 	FMOD_RESULT  result;
 
-	int switchSoundint;
+	int echoDelayMS;
+	bool temp;
+	bool echoActive;
 	unsigned int index;
 	
 };
