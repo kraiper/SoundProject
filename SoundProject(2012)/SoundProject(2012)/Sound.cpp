@@ -58,11 +58,12 @@ FMOD_RESULT F_CALLBACK myLowPass(FMOD_DSP_STATE *dsp_state, float *inbuffer, flo
         call a DSP information function. 
     */
     result = thisdsp->getInfo(name, 0, 0, 0, 0);
+
     //ERRCHECK(result);
+
 
     result = thisdsp->getUserData((void **)&userdata);
     //ERRCHECK(result);
-
     /*
         This loop assumes inchannels = outchannels, which it will be if the DSP is created with '0' 
         as the number of channels in FMOD_DSP_DESCRIPTION.  
@@ -70,23 +71,32 @@ FMOD_RESULT F_CALLBACK myLowPass(FMOD_DSP_STATE *dsp_state, float *inbuffer, flo
         but outputting the number of channels specified. Generally it is best to keep the channel 
         count at 0 for maximum compatibility.
     */
+
+	f = 1500;
+	
+	b = sqrt(pow(2-cos((2*PI*f)/SR),2)-1) - 2 + cos((2*PI*f)/SR);
+
+	a = 1 + b;
+
+
+
+	int channels = *outchannels;
+	
+
+	// y(n) = ax(n) - by(n-1)
+	
+	
     for (unsigned int samp = 0; samp < length; samp++) 
     { 
         /*
             Feel free to unroll this.
         */
-        for (int chan = 0; chan < *outchannels; chan++)
-        {
-            /* 
-                This DSP filter just halves the volume! 
-                Input is modified, and sent to output.
-            */
-            outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];
 
-			if(samp > length/8)
-				outbuffer[(samp * *outchannels) + chan] += inbuffer[((samp-length/8) * inchannels) + chan] * 0.2f;
-        }
+		outbuffer[(samp * *outchannels) ] = a*inbuffer[(samp * inchannels) ] - b*previous;
+		previous = outbuffer[(samp * *outchannels) ];
+
     } 
+
 
     return FMOD_OK; 
 } 
@@ -116,21 +126,46 @@ FMOD_RESULT F_CALLBACK myHighPass(FMOD_DSP_STATE *dsp_state, float *inbuffer, fl
         but outputting the number of channels specified. Generally it is best to keep the channel 
         count at 0 for maximum compatibility.
     */
+
+	
+	 f = 1500;
+
+	 b =  2 - cos((2*PI*f)/SR) - sqrt(pow(2-cos((2*PI*f)/SR),2)-1);
+
+	 a = 1 - b;
+
+
+	int channels = *outchannels;
+
+	
+
+	//f = 1500;
+
+	//b = sqrt(pow(2-cos((2*PI*f)/SR),2)-1) - 2 + cos((2*PI*f)/SR);
+
+	//a = 1 + b;
+
+	// y(n) = ax(n) - by(n-1)
+	
+	
     for (unsigned int samp = 0; samp < length; samp++) 
     { 
         /*
             Feel free to unroll this.
         */
-        for (int chan = 0; chan < *outchannels; chan++)
-        {
-            /* 
-                This DSP filter just halves the volume! 
-                Input is modified, and sent to output.
-            */
-            outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];
 
-			if(samp > length/8)
-				outbuffer[(samp * *outchannels) + chan] += inbuffer[((samp-length/8) * inchannels) + chan] * 0.2f;
+			//outbuffer[(samp * *outchannels) + chan] = a*inbuffer[(samp * inchannels) + chan] - b*inbuffer[((samp-1) * inchannels) + chan];
+		
+
+        for (int chan = 0; chan < channels; chan++)
+        {
+			
+			
+			outbuffer[(samp * *outchannels) + chan] = a*inbuffer[(samp * inchannels) + chan] - b*previous;
+			previous = outbuffer[((samp) * *outchannels) + chan];
+
+			
+			
         }
     } 
 
@@ -187,6 +222,9 @@ Sound::Sound()
 {
 	channel = 0;
 	//echo channelEcho = 0;
+	
+	SR = 44100;
+	
 }
 
 Sound::~Sound()
@@ -213,10 +251,11 @@ void Sound::Initialize(FMOD::System *fmodsystem, char* filename)
 	//DSP
 	strncpy(dspdesc.name, "custom DSP unit", sizeof(dspdesc.name));
 	dspdesc.version = 0x00010000;
-	dspdesc.numinputbuffers = 1;
-	dspdesc.numoutputbuffers = 1;
-	dspdesc.read = myDSPCallback;
+	dspdesc.numinputbuffers = 0;
+	dspdesc.numoutputbuffers = 0;
+	dspdesc.read = myLowPass;
 	dspdesc.userdata = (void *)0x12345678; 
+	
 
 	result = fmodSystem->createDSP(&dspdesc, &customDSP); 
 	//ERRCHECK(result); 
@@ -230,6 +269,27 @@ void Sound::Initialize(FMOD::System *fmodsystem, char* filename)
     result = mastergroup->addDSP(0, customDSP, 0);
     //ERRCHECK(result);
     
+
+	//High DSP
+	strncpy(dspdesc.name, "high DSP unit", sizeof(dspdesc.name));
+	dspdesc.version = 0x00010000;
+	dspdesc.numinputbuffers = 0;
+	dspdesc.numoutputbuffers = 0;
+	dspdesc.read = myHighPass;
+	dspdesc.userdata = (void *)0x12345678; 
+	
+
+	result = fmodSystem->createDSP(&dspdesc, &highDSP); 
+	//ERRCHECK(result); 
+
+	result = customDSP->setBypass(true);
+    //ERRCHECK(result);
+
+    result = fmodSystem->getMasterChannelGroup(&mastergroup);
+    //ERRCHECK(result);
+
+    result = mastergroup->addDSP(0, highDSP, 0);
+    //ERRCHECK(result);
 }
 
 void Sound::Play()
@@ -245,6 +305,11 @@ void Sound::Update()
 		result = customDSP->setBypass(false);
 	else
 		result = customDSP->setBypass(true);
+
+	if (buttonInput->GetNPressed())
+		result = highDSP->setBypass(false);
+	else
+		result = highDSP->setBypass(true);
 
 }
 
@@ -284,6 +349,10 @@ void Sound::CalculateSoundLevel(float soundVector[3],float listenerVector[3], fl
 		left *= volumeScaling;
 		right *= volumeScaling;
 
+	}
+	else
+	{
+		
 	}
 
 

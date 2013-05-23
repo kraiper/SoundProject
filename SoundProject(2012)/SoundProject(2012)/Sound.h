@@ -4,6 +4,12 @@
 	
 extern ButtonInput* buttonInput;
 
+static float previous;
+static float a;
+static float b;
+static float f;
+static float SR;
+
 class Sound
 {
 public:
@@ -20,6 +26,8 @@ public:
 
 	void SwitchSounds();
 
+	
+
 private:
 	
 
@@ -27,6 +35,7 @@ private:
 	FMOD::Sound *sound1;
 	FMOD::Sound *sound2;
 	FMOD::DSP *customDSP;
+	FMOD::DSP *highDSP;
 	FMOD::ChannelGroup *mastergroup;
     FMOD::Channel *channel;
 	//echo FMOD::Channel *channelEcho;
@@ -34,5 +43,6 @@ private:
 
 	int switchSoundint;
 	unsigned int index;
+
 	
 };

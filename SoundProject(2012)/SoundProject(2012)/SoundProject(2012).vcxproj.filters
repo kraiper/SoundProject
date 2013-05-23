@@ -42,6 +42,8 @@
     <Media Include="Sounds\almostjungle_FL.wav" />
     <Media Include="Sounds\almostjungle.wav" />
     <Media Include="Sounds\aint_I_right.mp3" />
+    <Media Include="Sounds\NomNomNom.mp3" />
+    <Media Include="Sounds\StereoHearts.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Object files\Hydralisk_obj\Hydtex.jpg" />

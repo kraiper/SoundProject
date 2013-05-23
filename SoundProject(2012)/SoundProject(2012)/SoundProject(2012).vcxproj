@@ -123,7 +123,9 @@
     <Media Include="Sounds\almostjungle_FL.wav" />
     <Media Include="Sounds\bossa.mp3" />
     <Media Include="Sounds\Laser.mp3" />
+    <Media Include="Sounds\NomNomNom.mp3" />
     <Media Include="Sounds\StarcraftBackgroundTerran.mp3" />
+    <Media Include="Sounds\StereoHearts.mp3" />
     <Media Include="Sounds\ZerglingSoundTroll.mp3" />
     <Object Include="Object files\Hydralisk_obj\Hydralisk_obj.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

@@ -12,8 +12,8 @@ ObjHandler::ObjHandler(ID3D10Effect* FX)
 //	}
 
 	objList.push_back(new Object("Sounds/ZerglingSoundTroll.mp3"));
-	objList.push_back(new Object("Sounds/ZerglingSoundTroll.mp3"));
-	objList.push_back(new Object("Sounds/ZerglingSoundTroll.mp3"));
+	objList.push_back(new Object("Sounds/NomNomNom.mp3"));
+	objList.push_back(new Object("Sounds/StereoHearts.mp3"));
 	
 	load->LoadObject("Object files\\Bunker\\Bunker.obj",0,0,0,5,objList.at(0),1,-1,1);
 	load->LoadObject("Object files\\Bunker\\Bunker.obj",0,-40,0,5,objList.at(1),1,-1,1);
